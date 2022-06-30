@@ -1,0 +1,41 @@
+<% layout('layouts/boilerplate')%>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <div class="card shadow">
+                <img src="https://images.unsplash.com/photo-1619537903549-0981d6bca911?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="" class="card-img-top" />
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <form action="/register" method="POST" class="validated-form" novalidate>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
+                              value="<%= typeof name != 'undefined' ? name : '' %>" />
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
+                              value="<%= typeof email != 'undefined' ? email : '' %>" />
+                          </div>
+                          <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password"
+                              value="<%= typeof password != 'undefined' ? password : '' %>" />
+                          </div>
+                          <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
+                              value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                          </div>
+                          <button type="submit" class="btn btn-primary btn-block">
+                            Register
+                          </button>
+                        </form>
+                        <p class="mt-4">Already have an account? <a href="/login">Login</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

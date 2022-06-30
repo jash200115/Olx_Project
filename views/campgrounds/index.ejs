@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate')%>
+
+<section>
+  <div class="container mt-3">
+      <h1 class="inline justify-content-center text-center font-weight-bold" >&#128722;All Products</h1>
+      <nav class="navbar navbar-light">
+      <div class="row">
+        <label for="search123" class="font-weight-bold">Want to buy ?? Enter the name of your product</label>
+          <input type="text" class="form-control me-2" id="serach123"  placeholder="Search">
+          <label for="rage" class="font-weight-bold">Set Your Required Range</label>
+          <div class="row mt-3" id="range">
+              <input type="number"  class="border border-light col-4 mr-3 rounded" id="min"  placeholder="min">
+              <input type="number"  class="border border-light col-4 mr-3 rounded" id="max"  placeholder="max">
+              <button id="filter" class="btn btn-outline-success col-3 ml-3">Search</button>
+          </div>
+      </div>
+    </nav>
+      <div class="row">
+              <% for(let campground of campgrounds) {%>
+                  <a href="/campgrounds/<%=campground._id%>" id="<%=campground._id%>" class="col-md-3 col-6 text-decoration-none mt-3">
+                      <div class="shadow mt-2">
+                          <div class="card">
+                              <%if(campground.images.length){%>
+                                  <img crossorigin="anonymous" class="card-img-top" src="<%=campground.images[0].thumbnail%>" alt="Card image cap">
+                              <%}else{%>
+                                  <img crossorigin="anonymous" class="card-img-top" src="https://res.cloudinary.com/dvdtzbxzw/image/upload/v1655404288/YelpCamp/dx5rva6rd2zktf75axkx.jpg" alt="Card image cap">
+                              <%}%>
+                              <div class="card-body text-center ">
+                                  <h5 style="color: black;">&#8377; <%=campground.price%></h5>
+                                  <p class="text-muted text-truncate mt-0"><%=campground.title%></p>
+                                  <p class="text-muted text-truncate mt-0"><%=campground.description%></p>
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+              <%}%>
+      </div>
+  </div>
+</section>
+
+<script>
+  const btn = document.getElementById("filter");
+  var pros = [];
+  btn.addEventListener("click" , ()=>{
+      let x = document.getElementById("serach123");
+      let mn = document.getElementById("min");
+      let mx = document.getElementById("max");
+      pros = [];
+      const campgrounds = <%- JSON.stringify(campgrounds) %>;
+      for(let campground of campgrounds)    
+      {
+          const x1 = x.value.toLowerCase() || "";
+          const mn1 = mn.value || 0;
+          const mx1 = mx.value || 100000000;
+          const x2 = campground.title.toLowerCase();
+          const x3 = campground.description.toLowerCase();
+          const x4 = document.getElementById(campground._id)
+          const x5 = campground.price;
+          if((x2.includes(x1) || x3.includes(x1))&& (x5>=mn1 && x5<=mx1))
+          {
+             x4.style.display = "";
+          }
+          else
+          {
+              x4.style.display = "none";
+          }
+      }
+  })
+</script>
+
+
+
+
