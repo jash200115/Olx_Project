@@ -48,7 +48,7 @@
         </div>
             <div class="card mb-3">
                 <div class="card-body">
-                  <h3 class="card-title font-weight-bold">Seller Description</h5>
+                  <h3 class="card-title font-weight-bold">Seller Description</h3>
                   <h6 class="card-subtitle mb-2 text-muted"><%= campground.author.username%></h6>
                   <p class="mt-2">
                     <a class="btn btn-outline-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
@@ -57,8 +57,9 @@
                   </p>
                   <div class="collapse" id="collapseExample">
                     <div class="card card-body">
-                        <p class="card-text">Email : <%= campground.author.email%></p>
-                        <a href="mailto:<%= campground.author.email%>" class="card-link">Mail</a>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">Contact Information :</h6>
+                        <a href="mailto:<%= campground.author.email%>" class="card-link">&#x1F4E7 : <%= campground.author.email%></a>
+                        <p class="card-text">&phone; : <%= campground.author.contact%></p>
                     </div>
                   </div>
                 </div>
